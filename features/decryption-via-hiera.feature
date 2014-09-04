@@ -1,4 +1,3 @@
-@hiera18
 Feature: Decrypt values via hiera command
 
   Background: Encrypt key info
@@ -41,7 +40,7 @@ Feature: Decrypt values via hiera command
     When I run `raziel encrypt bar`
     Then the exit status should be 0
     When I remove the file "bar.yaml.plain"
-    And I run `hiera1.8 --config config.yaml somekey`
+    And I run `hiera --config config.yaml somekey`
     Then the exit status should be 0
     And the output should contain "somevalue"
 
@@ -55,7 +54,7 @@ Feature: Decrypt values via hiera command
     Then the exit status should be 0
     And the file "bar.yaml.enc" should not contain "PLAIN"
     When I remove the file "bar.yaml.plain"
-    And I run `hiera1.8 --config config.yaml somekey`
+    And I run `hiera --config config.yaml somekey`
     Then the exit status should be 0
     And the output should contain "secret"
 
@@ -71,7 +70,7 @@ Feature: Decrypt values via hiera command
     Then the exit status should be 0
     And the file "bar.yaml.enc" should not contain "PLAIN"
     When I remove the file "bar.yaml.plain"
-    And I run `hiera1.8 --config config.yaml somekey`
+    And I run `hiera --config config.yaml somekey`
     Then the exit status should be 0
     And the output should contain "geheim"
 
@@ -87,7 +86,7 @@ Feature: Decrypt values via hiera command
     Then the exit status should be 0
     And the file "bar.yaml.enc" should not contain "PLAIN"
     When I remove the file "bar.yaml.plain"
-    And I run `hiera1.8 --config config.yaml somekey`
+    And I run `hiera --config config.yaml somekey`
     Then the exit status should be 0
     And the output should contain "secure"
 
@@ -104,6 +103,6 @@ Feature: Decrypt values via hiera command
     Then the exit status should be 0
     And the file "bar.yaml.enc" should not contain "PLAIN"
     When I remove the file "bar.yaml.plain"
-    And I run `hiera1.8 --config config.yaml somekey`
+    And I run `hiera --config config.yaml somekey`
     Then the exit status should be 0
     And the output should contain "KEY-----\n1234567890qwerty\n-----END"

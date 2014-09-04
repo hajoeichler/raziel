@@ -1,4 +1,3 @@
-@hiera18
 Feature: The order of the yaml files in the config.yaml is important
 
   Background: Encrypt key info
@@ -51,7 +50,7 @@ Feature: The order of the yaml files in the config.yaml is important
     """
 
   Scenario: Normal yaml backend order
-    When I run `hiera1.8 --config config.yaml file`
+    When I run `hiera --config config.yaml file`
     Then the exit status should be 0
     And the output should contain "first"
 
@@ -64,7 +63,7 @@ Feature: The order of the yaml files in the config.yaml is important
     When I run `raziel encrypt second`
     Then the exit status should be 0
     When I remove the file "second.yaml.plain"
-    And I run `hiera1.8 --config config.yaml file`
+    And I run `hiera --config config.yaml file`
     Then the exit status should be 0
     And the output should contain "second"
 
@@ -98,7 +97,7 @@ Feature: The order of the yaml files in the config.yaml is important
     """
     Then the exit status should be 0
     When I remove the file "second.yaml.plain"
-    And I run `hiera1.8 --config config.yaml file`
+    And I run `hiera --config config.yaml file`
     Then the exit status should be 0
     And the output should contain "first"
 
@@ -119,6 +118,6 @@ Feature: The order of the yaml files in the config.yaml is important
     When I run `raziel encrypt fourth`
     Then the exit status should be 0
     When I remove the file "fourth.yaml.plain"
-    And I run `hiera1.8 --config config.yaml file`
+    And I run `hiera --config config.yaml file`
     Then the exit status should be 0
     And the output should contain "second"
