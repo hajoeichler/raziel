@@ -98,3 +98,7 @@ encrypted and the result will be stores as `ENC( .... )`.
 
 Raziel could be re-written to work as an additional layer on top of
 other backends. So other backends (like Mongo) could be used.
+
+# Using raziel inside a Docker container
+
+[![Docker build](http://dockeri.co/image/onibox/raziel)](https://registry.hub.docker.com/u/onibox/raziel/)
