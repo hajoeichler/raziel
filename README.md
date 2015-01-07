@@ -110,7 +110,7 @@ docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v $HOME/my-credentials/:/root/cr
 ```
 To ease the use you can put the following lines into your bash .profile:
 ```
-function raziel { docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v `dirname $2`:/root/cred/ raziel $1 /root/cred/`basename $2`; }
+function raziel { docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v `dirname $2`:/root/cred/ onibox/raziel $1 /root/cred/`basename $2`; }
 export -f raziel
 ```
 Then you can run commands like
