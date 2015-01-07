@@ -43,20 +43,20 @@ and is UNTESTED with 2.0.
 
 ### Usage Example
 
-```
+```bash
 docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v $HOME/my-credentials/:/root/credentials/ onibox/raziel view /root/credentials/foo.yaml.enc
 ```
 
 To ease the use you can put the following lines into your bash .profile:
 
-```
+```bash
 function raziel { docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v `dirname $2`:/root/cred/ onibox/raziel $1 /root/cred/`basename $2`; }
 export -f raziel
 ```
 
 Then you can run commands like
 
-```
+```bash
 raziel view ./my-credentials/foo.yaml.enc
 ```
 
@@ -79,24 +79,23 @@ Basic Ruby Version Manager (RVM) setup
   - `cd <raziel.git> && gem install <GEM>`
 - make sure Ruby 1.9.3 is the active version
 
-## Ubuntu
+# Development
 
-Build the package via `dpkg build-package`
+Use an ubuntu box:
+```bash
+cd <raziel.git>
+. ENVIRONMENT
+raziel
+```
 
-# How to run?
-
-See all available commands:
-`cd <raziel.git>`
-`. ENVIRONMENT`
-`raziel`
-
-How to simply edit a file:
-`./bin/raziel edit <your_file>`
-
-### Run the tests
+## Run the tests
 
 - on Mac ```cucumber -p mac```
 - anywhere else just ```cucumber```
+
+## Build debian package
+
+Build the package via `dpkg build-package`
 
 # Tech doc
 
