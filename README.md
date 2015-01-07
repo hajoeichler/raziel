@@ -98,3 +98,26 @@ encrypted and the result will be stores as `ENC( .... )`.
 
 Raziel could be re-written to work as an additional layer on top of
 other backends. So other backends (like Mongo) could be used.
+
+# Using raziel inside a Docker container
+
+[![Docker build](http://dockeri.co/image/onibox/raziel)](https://registry.hub.docker.com/u/onibox/raziel/)
+
+## Use Example
+
+```
+docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v $HOME/my-credentials/:/root/credentials/ onibox/raziel view /root/credentials/foo.yaml.enc
+```
+
+To ease the use you can put the following lines into your bash .profile:
+
+```
+function raziel { docker run -t -i -v $HOME/.gnupg:/root/.gnupg/ -v `dirname $2`:/root/cred/ onibox/raziel $1 /root/cred/`basename $2`; }
+export -f raziel
+```
+
+Then you can run commands like
+
+```
+raziel view ./my-credentials/foo.yaml.enc
+```
